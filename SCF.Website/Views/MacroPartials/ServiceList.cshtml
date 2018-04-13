@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using Umbraco.Web
+
+
+@*
+    This snippet makes a list of links to the of children of the current page using an unordered HTML list.
+
+    How it works:
+    - It uses the Children method to get all child pages
+    - It then uses the OrderByDescending() method, which takes the property to sort. In this case the page's creation date.
+    - It then generates links so the visitor can go to each page
+*@
+
+@{ var selection = Model.Content.Children.Where(x => x.IsVisible()).OrderByDescending(x => x.CreateDate).ToArray(); }
+
+@if (selection.Length > 0)
+{
+            <div class="row">
+        @foreach (var item in selection)
+        {
+    
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="service-block">
+                    <!-- service block -->
+                    <div class="service-icon mb20">
+                        <!-- service img -->
+                        <img src="" alt=""> </div>
+                    <!-- service img -->
+                    <div class="service-content">
+                        <!-- service content -->
+                        <h2><a href="#@item.Url" class="title ">
+                            @item.GetProperty("ServiceTitle").Value
+                        </a></h2>
+                        <p>@item.GetProperty("ServiceSmallDescription").Value</p>
+                    </div>
+                    <!-- service content -->
+                </div>
+                <!-- /.service block -->
+            </div>
+        }
+            </div>
+}

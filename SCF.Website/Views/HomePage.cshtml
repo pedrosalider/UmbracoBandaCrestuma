@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = "Master.cshtml";
+}
+
+    <div class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h1 class="hero-title">@Umbraco.Field("description")</h1>
+                    <p class="hero-text"><strong>@Umbraco.Field("smallDescription")</strong> </p>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="space-medium">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="mb60 text-center section-title">
+                        <!-- section title start-->
+                        <h1>@Umbraco.Field("servicesSectionTitle")</h1>
+                        <h5 class="small-title ">@Umbraco.Field("servicesSectionSmallDescription")</h5>
+                    </div>
+                    <!-- /.section title start-->
+                </div>
+            </div>
+        @Umbraco.RenderMacro("ServiceList")
+        </div>
+    </div>
